@@ -1,0 +1,41 @@
+pic=imread('lena.bmp');
+ imshow(pic);
+ for i=1:7
+     pic2=floor(pic/(2^i));
+     figure,imshow(pic2,[0,2^(8-i)-1]);
+ end
+mean2(pic)
+std2(pic)
+
+ pic3=imresize(pic,[2048,2048],'nearest');
+ figure,imshow(pic3);
+ pic4=imresize(pic,[2048,2048],'bilinear');
+ figure,imshow(pic4);
+ pic5=imresize(pic,[2048,2048],'bicubic');
+ figure,imshow(pic5);
+
+
+pic_=imread('elain1.bmp');
+T1=[1,1.5,0;0,1,0;0,0,1];
+T2=[0.866,0.5,0;-0.5,0.866,0;0,0,1];
+tform1=maketform('affine',T1);
+tform2=maketform('affine',T2);
+pic6=imtransform(pic,tform1);
+pic7=imtransform(pic_,tform2);
+
+ pic3=imresize(pic6,[2048,2048],'nearest');
+ figure,imshow(pic3);
+ pic4=imresize(pic6,[2048,2048],'bilinear');
+ figure,imshow(pic4);
+ pic5=imresize(pic6,[2048,2048],'bicubic');
+ figure,imshow(pic5);
+
+pic3=imresize(pic7,[2048,2048],'nearest');
+figure,imshow(pic3);
+pic4=imresize(pic7,[2048,2048],'bilinear');
+figure,imshow(pic4);
+pic5=imresize(pic7,[2048,2048],'bicubic');
+figure,imshow(pic5);
+
+
+
